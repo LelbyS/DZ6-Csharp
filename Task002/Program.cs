@@ -9,26 +9,27 @@ void Main ()
     double b1 = IntRead("b1");
     double k2 = IntRead("k2");
     double b2 = IntRead("b2");
-
-    double y = k1*Argyment(k1, b1, k2, b2) + b1;
-
-    System.Console.WriteLine($" точка пересечения прямых ({Argyment(k1, b1, k2, b2)};{y})");
-
+    double x = 1;
+    double y = 1;
+    if(Argyment(k1, k2))
+    {
+        x = (b2 - b1)/(k1 - k2);
+        y = k1*(b2 - b1)/(k1 - k2) + b1;
+        System.Console.WriteLine($" точка пересечения прямых ({x};{y})");
+    }
 }
 
-double Argyment(double k1, double b1, double k2, double b2)
+bool Argyment(double k1, double k2)
 {
-    double num =1;
     if (k1 == k2)
     {
         System.Console.WriteLine("прямые парралельные - точки пересечения не существует");
+        return false;
     }
-    else
-    {
-       num = (b2 - b1)/(k1 - k2);
-    }
-    return num;
+    
+    return true;
 }
+
 
 int IntRead(string argument)
 {
